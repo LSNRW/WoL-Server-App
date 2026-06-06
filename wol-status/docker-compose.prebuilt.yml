@@ -1,0 +1,24 @@
+# Endnutzer-Variante: zieht das fertig veröffentlichte Image, baut nichts.
+#
+# Starten:
+#   docker compose -f docker-compose.prebuilt.yml up -d
+#
+# Das Image ist multi-arch (amd64 + arm64) — Docker zieht automatisch die
+# passende Variante für deine CPU. Siehe INSTALL.md für die ausführliche
+# Schritt-für-Schritt-Anleitung.
+
+services:
+  wol-status:
+    image: ghcr.io/lsnrw/wol-status:latest
+    container_name: wol-status
+    restart: unless-stopped
+
+    # Host-Netzwerk:
+    #  - misst die echten Netzwerk-Interfaces (eth0/wlan0/…) statt des Container-veth
+    #  - bindet Port 8000 direkt auf dem Host (kein 'ports:' nötig)
+    network_mode: host
+
+    volumes:
+      # Optional: nur nötig, wenn du den Docker-Tab in der App nutzen willst.
+      # Wenn nicht gewünscht, diese Zeile entfernen.
+      - /var/run/docker.sock:/var/run/docker.sock:ro

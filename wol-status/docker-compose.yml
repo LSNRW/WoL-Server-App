@@ -1,0 +1,23 @@
+# wol-status – System-/Docker-Statistiken für die "WOL & Server" App.
+#
+# Auf dem Raspberry Pi starten:
+#   docker compose up -d --build
+# Prüfen:
+#   curl http://localhost:8000/status
+#   curl http://localhost:8000/containers
+services:
+  wol-status:
+    build: .
+    container_name: wol-status
+    restart: unless-stopped
+
+    # Host-Netzwerk ist hier wichtig:
+    #  - misst die echten Netzwerk-Interfaces (eth0/wlan0) statt des Container-veth
+    #  - bindet den Dienst direkt auf Port 8000 des Pi (deshalb kein 'ports:' nötig)
+    network_mode: host
+
+    volumes:
+      # Für den /containers-Endpoint bzw. den Docker-Tab in der App.
+      # Nur lesender Zugriff – die App listet hierüber nur; Start/Stop/Restart
+      # laufen in der App über SSH, nicht über diesen Socket.
+      - /var/run/docker.sock:/var/run/docker.sock:ro

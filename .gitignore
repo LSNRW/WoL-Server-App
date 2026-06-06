@@ -1,0 +1,33 @@
+# Schließt alles aus, was nicht zum öffentlichen Backend-Repo gehört.
+# (Die Flutter-App wolserverstats/ ist nicht Teil dieses Public-Repos.)
+
+# --- App-Code (privat, gehört nicht ins Public-Repo) -------------------------
+wolserverstats/
+AppIcon.png
+
+# --- Editor / IDE -----------------------------------------------------------
+.vscode/
+.idea/
+*.iml
+.DS_Store
+
+# --- macOS / Sonstige ------------------------------------------------------
+Thumbs.db
+*.swp
+
+# --- Python (für lokale Tests des Backends) --------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# --- Docker Buildkit Cache -------------------------------------------------
+.docker-buildx-cache/
+
+# --- Lokale Secrets / Env-Files --------------------------------------------
+.env
+.env.*
+secrets/
+*.pem
+*.key
