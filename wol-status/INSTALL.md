@@ -60,8 +60,16 @@ docker run -d \
   ghcr.io/lsnrw/wol-status:latest
 ```
 
-> Das ist ein **Multi-Arch-Image** (amd64 + arm64) — Docker zieht
-> automatisch die zur CPU deines Hosts passende Variante.
+> Das Image gibt es auf zwei Registries — beide aus demselben CI-Build,
+> beide **Multi-Arch** (amd64 + arm64), beide ohne Login pullbar:
+>
+> | Registry | Image-Adresse |
+> |---|---|
+> | GitHub Container Registry | `ghcr.io/lsnrw/wol-status:latest` |
+> | Docker Hub | `lsnrw/wol-status:latest` |
+>
+> Falls dein Netz `ghcr.io` blockt, einfach den letzten Tag oben durch
+> `lsnrw/wol-status:latest` ersetzen.
 
 Prüfen:
 ```bash

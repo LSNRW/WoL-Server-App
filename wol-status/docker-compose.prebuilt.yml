@@ -9,6 +9,8 @@
 
 services:
   wol-status:
+    # Default: GitHub Container Registry.
+    # Alternative (gleiches Image): lsnrw/wol-status:latest  ← Docker Hub
     image: ghcr.io/lsnrw/wol-status:latest
     container_name: wol-status
     restart: unless-stopped

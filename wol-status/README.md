@@ -38,6 +38,14 @@ bereitstellt.
 > Docker-Installation, Compose-Datei und der bequemen One-Tap-Variante aus
 > der App) steht in **[INSTALL.md](INSTALL.md)**.
 
+Das Image gibt es auf **zwei Registries** — beide aus demselben CI-Build,
+beide Multi-Arch (amd64 + arm64), beide ohne Login pullbar:
+
+| Registry | Image-Adresse |
+|---|---|
+| GitHub Container Registry *(Default)* | `ghcr.io/lsnrw/wol-status:latest` |
+| Docker Hub *(Alternative)* | `lsnrw/wol-status:latest` |
+
 ```bash
 docker run -d \
   --name wol-status \
@@ -47,7 +55,8 @@ docker run -d \
   ghcr.io/lsnrw/wol-status:latest
 ```
 
-> Multi-Arch-Image — Docker zieht automatisch die passende Variante (amd64/arm64).
+> Falls dein Netz `ghcr.io` blockt: den letzten Tag durch
+> `lsnrw/wol-status:latest` ersetzen — alles andere bleibt gleich.
 
 Prüfen:
 ```bash

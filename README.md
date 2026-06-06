@@ -23,13 +23,16 @@ die Live-Daten für den Status- und den Docker-Tab liefert.
 
 ## Schnellstart
 
+Das Image gibt's auf **GHCR** und **Docker Hub** — beide aus demselben
+CI-Build, beide multi-arch:
+
 ```bash
 docker run -d \
   --name wol-status \
   --restart unless-stopped \
   --network host \
   -v /var/run/docker.sock:/var/run/docker.sock:ro \
-  ghcr.io/lsnrw/wol-status:latest
+  ghcr.io/lsnrw/wol-status:latest        # oder: lsnrw/wol-status:latest (Docker Hub)
 ```
 
 Vollständige Anleitung inkl. Docker-Installation, Compose-Datei und der
